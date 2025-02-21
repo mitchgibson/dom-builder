@@ -9,8 +9,15 @@
 </template>
 
 <script lang="ts" setup>
+import type { ElementType } from '@/domain/element/Element';
+
+
+const props = defineProps<{
+  type: ElementType;
+}>()
+
 function onDragStart(event: DragEvent) {
   // Set data to transfer
-  event.dataTransfer?.setData('text/plain', 'button-element');
+  event.dataTransfer?.setData('text/plain', props.type);
 }
 </script>
