@@ -1,5 +1,7 @@
 <template>
-  <div ref="canvasRef" @dragover.prevent @drop="onDrop"></div>
+  <div class="canvas-grid overflow-auto">
+    <div ref="canvasRef" class="min-w-full min-h-full" @dragover.prevent @drop="onDrop"></div>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -38,6 +40,9 @@ function onDrop(event: DragEvent) {
   if (type === "row") {
     const row = createRow();
     row.style.minHeight = "100px";
+    row.style.padding = "10px";
+    row.style.flexDirection = "row";
+
     (event.target as HTMLElement)?.appendChild(createWrapper(row, type));
   }
   if (type === "column") {
@@ -74,3 +79,11 @@ function createWrapper(element: HTMLElement, type: ElementType) {
   return wrapper;
 }
 </script>
+
+<style>
+.canvas-grid {
+  background-image: radial-gradient(circle, #3f3f46 1px, transparent 1px);
+  background-size: 24px 24px; /* Grid size - adjust this to change grid density */
+  background-position: -1px -1px;
+}
+</style>

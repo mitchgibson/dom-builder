@@ -1,5 +1,5 @@
 <template>
-  <DomBuilder class="w-screen h-screen" />
+  <DomBuilder />
 </template>
 <script setup lang="ts">
 import DomBuilder from "./components/DomBuilder.vue";
